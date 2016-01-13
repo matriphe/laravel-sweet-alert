@@ -7,67 +7,76 @@ Simple package, but effective.
 
 Add to your composer.json file the package.
 
-````
-"infinety/sweetalert": "dev-master"
-````
+```
+"repositories": [
+        {
+            "type": "vcs",
+            "url":  "https://github.com/matriphe/laravel-sweet-alert.git"
+        }
+    ],
+```
+
+In `required` section, add this
+
+```
+"infinety/sweetalert": "dev-matriphe"
+```
 
 Update your dependencies
 
-````
+```
 composer update
-````
+```
 
 After install this package you have to set the service provider on your config/app.php file
 
-````
+```
 Infinety\SweetAlert\AlertServiceProvider::class
-````
+```
 
+Add alias
 
-Copy the required assets of SweetAlert to your public folder. Those assets would be place in the css and js respective directory.
+```
+'Swalert' => Infinety\SweetAlert\Facade::class,
+```
 
-````
+Copy the required assets and config of SweetAlert to your public folder. Those assets would be place in the css and js respective directory.
+
+```
 php artisan vendor:publish --tag=alerts
-````
+```
 
 Then in your master view add those styles and scripts. Put this style between the <head> </head> tags
 
-````
+```
 <link rel="stylesheet" type="text/css" href="css/sweetalert.css">
-````
+```
 
 Add the JS script before close your </body> tag.
 
-````
+```
 <script src="js/sweetalert.js"></script>
-````
+```
 
 Include the alerts view to your master view. Add this code right after set the JS script file.
 
-````
+```
 @include('Alerts::alerts')
-````
+```
 
 ###Usage
 
 On your controllers is a perfect place to use it, any way you can fire the alerts from jobs or events.
 
-````
-alert('Title', 'Message')
+```
+Swalert::error('Title', 'Message')
 
 
-alert()->error('Title', 'Message')
+Swalert::success('Title', 'Message')
 
 
-alert()->success('Title', 'Message')
-
-
-alert()->overlay('Title', 'Message')
-````
-
-###Issues
-
-If you have any questions or issues, please open an Issue and I will look at this and look to fix as soon as possible.
+Swalert::overlay('Title', 'Message')
+```
 
 ###SweetAlert website
 

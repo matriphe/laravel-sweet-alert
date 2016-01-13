@@ -24,7 +24,10 @@ class AlertServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        include __DIR__ . '/helpers.php';
+        $this->app['swalert'] = $this->app->share(function ($app) {
+    
+            return new Flash();
+        });
     }
 
     /**
