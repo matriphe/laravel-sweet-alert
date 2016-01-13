@@ -8,10 +8,3 @@ function swalert($title = null, $message = null)
     }
     return $flash->info($title, $message);
 }
-
-if (!function_exists('alert')) {
-    function alert($title = null, $message = null)
-    {
-        return swalert($title, $message);
-    }
-}
